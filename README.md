@@ -59,6 +59,20 @@ Examples:
   Bitmask.new(masks, bitmask.msb).to_a # => [:fish]
 ```
 
+### Chaining
+
+```ruby
+  masks = {
+            :cat  => 0b0001,
+            :dog  => 0b0010,
+            :fish => 0b0100,
+          }
+  bitmask = Bitmask.new(masks, {:cat => true})
+  bitmask.to_i.to_s(2)    # => "1"
+  bitmask.set(:dog, true).set(:cat, false).set(:fish, true)
+  bitmask.to_i.to_s(2)    # => "110"
+```
+
 ## Contributing
 
 1. Fork it
